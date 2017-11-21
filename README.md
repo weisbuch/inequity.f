@@ -1,5 +1,5 @@
-Fortran file used in manuscript "Lattice dynamics of inequity"
-submitted to JASSS in sept. 2017.
+Fortran and nlogo files used in manuscript "Lattice dynamics of inequity"
+submitted to JASSS in sept. 2017. Pdf version is 
 
       \begin{abstract}
 We discuss a model of inequity based on iteration 
