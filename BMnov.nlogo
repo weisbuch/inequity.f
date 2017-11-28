@@ -140,8 +140,8 @@ SLIDER
 beta
 beta
 0
-3
-2.0
+60
+50.0
 0.1
 1
 NIL
@@ -156,7 +156,7 @@ gam
 gam
 0
 1
-0.9
+0.5
 0.05
 1
 NIL
@@ -259,17 +259,20 @@ in 1950. During one session of the game, each agent
 can, independently of his opponent, request one among three demands:
 L(ow) demand 30 perc. of a pie, M(edium) 50 perc. and H(igh) 70 perc.
 As a result, the two agents get at the end of the session
-what they demanded when the sum of both demands is less
-than the 100 perc. total; otherwise they get nothing.
+what they demanded when the sum of both demands is less or equal
+to the 100 perc. total; otherwise they get nothing.
 In the course of repeated games with neighbours, agents
 learn the expected benefit they can obtain and built preference coefficients
 J to choose their next moves.
 
 HOW IT WORKS
 
+Except for the mean field choice, each agent occupies the cell of a 33x33 lattice.
+Randomly chosen agents play the bargaining game with one of their neighbours.
 In the course of repeated games agents
 learn the expected benefit they can obtain by building preference coefficients
-J for each possible move by computing a moving average of the benefits obtained during previous sessions. They choose their next move according to Boltzmann probabilities
+J for each possible move by computing a moving average of the benefits obtained during previous sessions. 
+They choose their next move according to Boltzmann probabilities
 of expected benefits. 
 
 HOW TO USE IT
@@ -280,10 +283,16 @@ The init button establishes the inital conditions randomly according to the choo
 141 favours choices M with respect to H and L).
 
 The 3 sliders allow to set the parameters of the model: 
-- larger beta favours strict ‘greedy’ choices, lower beta values give random choices;
+- larger beta favours strict ‘greedy’ choices such that agents exploit the information
+they previously gathered; lower beta values give random choices
+and favours exploration;
 - gam is a memory parameter of previous choices, higher values close to 1
 imply long term memory.
-- lambda is a greed parameter: large values make bigger differences in the alloted shares of the pie; lambda=0.2 gives the original shares proposed by Nash (0.3, 0.5, 0.7).
+- lambda is a greed parameter: large values make bigger differences in the alloted shares of the pie; 
+lambda=0.2 gives the original shares proposed by Nash (0.3, 0.5, 0.7).
+It might be easier to initially maintain constant the values gam=0.9 and lambda=0.2
+to practice with changing beta from 0.0 to 3. You may later check the influence
+of the two other parameters.
 
 The connections button allows to set the choice of neighbourhood:
 - with the mean field choice any pair of agents can play the game;
@@ -293,26 +302,41 @@ The connections button allows to set the choice of neighbourhood:
 -The go once and go buttons allow the games to proceed until
 stopped when go is pressed again. 
 
+  The left figure represents the preference coefficients of agents
+on the lattice according to a colour code: green codes for L,
+blue for M and red for H. 
+
+The right plot display the evolutions of agent populations
+with pure preferences for H, M or L choices. The time unit is the
+the average time between two games per agents.
+
 THINGS TO NOTICE
 
 The spatio-temporal dynamics depends upon parameter and initial
 conditions. Low beta values result in disordered regimes such that
-agents' choices are random and incoherent. Increasing beta one obtains
+agents' choices are random and incoherent. The observed colors on
+the lattice plot are composite since all preference coefficients are non-zero. 
+ Increasing beta from 0 one obtains
 ordered regimes such that agents' choices end-up being fix and
-coordinated in either an equity regime or in a class systems such that some
-higher class agents exploit their neighbours by requesting and obtaining high share H. 
+coordinated in either an equity regime (the blue cells on the configuration diagram) 
+or in a class systems such that some higher class agents (the red cells)
+exploit their neighbours (the green cells) by requesting and obtaining high share H. 
 
 THINGS TO TRY
 
 What are the critical values of beta, gam and lambda coefficients
 separating the different regimes? What is the influence of the connections
-button on the spatial display? 
+button on the spatial display?
+ Does the dynamics changes with the size of the lattice?
+(It can be adjusted by changing max-pxcor and  max-pycor
+ when one edits the lattice display).
 
 EXTENDING THE MODEL
 
 - Extend the choice of possible initial conditions.
 - Check for resp. revolutions or resp. conquests when starting from homogeneous islands
-of resp. M agents among a sea of H/L players or from islands of H/L agents among M agents. What should be added to the model to display conquests?
+of resp. M agents among a sea of H/L players or from islands of H/L agents among M agents. 
+What should be added to the model to display conquests?
 - You might try to check the influence of other connection structures,
 scale free networks for instance using netlogo library.  
 - What about layered networks and n-level hierarchies? 
@@ -320,13 +344,16 @@ scale free networks for instance using netlogo library.
 RELATED MODELS
 
 - Axtell, R. L., Epstein, J. M. & Young, H. P. (2001). The emergence of classes in a multiagent bargaining model. Social dynamics, (pp. 191-211),
-starts from Nash bargaining game but with different learning and choice processes. 
+They start from Nash bargaining game but with different learning and choice processes. 
 
-- Axtell etal choices are used by Poza, D. J., Santos, J. I., Galán, J. M. & López-Paredes, A. (2011). Mesoscopic effects in an agent-based bargaining model in regular lattices. PLoS One, 6(3), e17661  and Santos, J. I., Poza, D. J., Galán, J. M. & López-Paredes, A. (2012). Evolution of equity norms in small-world networks. Discrete Dynamics in Nature and Society, 2012.
+- Axtell etal choices are used by Poza, D. J., Santos, J. I., Galán, J. M. & López-Paredes, A. (2011). 
+Mesoscopic effects in an agent-based bargaining model in regular lattices. PLoS One, 6(3), e17661  
+and Santos, J. I., Poza, D. J., Galán, J. M. & López-Paredes, A. (2012). Evolution of equity norms in small-world networks. Discrete Dynamics in Nature and Society, 2012.
 Both models use social networks. 
 
 - The model using this netlogo program is fully described in
-Weisbuch, G. (2018): Persistence of discrimination: Revisiting Axtell, Epstein and Young. Physica A: Statistical Mechanics and its Applications, 492(Supplement C), pp. 39-49.
+Weisbuch, G. (2018): Persistence of discrimination: Revisiting Axtell, Epstein and Young. Physica A: 
+Statistical Mechanics and its Applications, 492(Supplement C), pp. 39-49.
 doi: https://doi.org/10.1016/j.physa.2017.09.053
 URL http://dx.doi.org/https://doi.org/10.1016/j.physa.2017.09.053
 for the mean field version.
