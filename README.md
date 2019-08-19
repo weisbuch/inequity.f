@@ -1,6 +1,6 @@
 Fortran and nlogo programs used in manuscript "Lattice dynamics of inequity"
-submitted to JASSS in sept. 2017. The pdf version 
-of the manuscript is gwlatdyninequity.pdf.
+Journal of Artificial Societies and Social Simulation 21(1) 11, 2018.
+The pdf version of the manuscript is gwlatdyninequity.pdf.
 
 We discuss a model of inequity based on iteration 
 of the Nash multi--agent bargaining game on a lattice.
