@@ -21,6 +21,6 @@ one observes spatial domains and specific patterns
  of the inequity condition even in the absence of tags.  
 
 
-keywords
+keywords: 
 Inequity, Dynamical regimes, Lattice, Transitions, Tags.
 
