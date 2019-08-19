@@ -6,9 +6,9 @@ We discuss a model of inequity based on iteration
 of the Nash multi--agent bargaining game on a lattice.
 Agent's choices are based on a logit function and 
 gradual decay of memories of past profits.
-Numerical simulations demonstrate the stability   
+Numerical simulations demonstrate the stability 
 of various dynamical regimes, such as disorder, fairness or inequity,
-%%separated by transitions
+separated by transitions
 according to parameters and initial conditions.
 When playing the game on a lattice 
 i.e. using neighbouring agent interactions instead of
